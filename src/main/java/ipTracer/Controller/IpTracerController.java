@@ -1,6 +1,10 @@
 package ipTracer.Controller;
 
 
+
+import java.util.Iterator;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.web.client.RestTemplate;
@@ -20,6 +24,7 @@ public class IpTracerController {
 			String result = restTemplate.getForObject(uri, String.class);
 			System.out.println(transformarStringEmJson(result));
 			JSONObject jsonObject = transformarStringEmJson(result);
+			JSONArray jsonArray = (JSONArray) jsonObject.get("languages");
 			dadosIPDTO.setIp(jsonObject.get("ip_address").toString());
 			dadosIPDTO.setCidade(jsonObject.get("city").toString());
 			dadosIPDTO.setCod_regiao(jsonObject.get("region_code").toString());
@@ -34,10 +39,16 @@ public class IpTracerController {
 			dadosIPDTO.setPais(jsonObject.get("country").toString());
 			dadosIPDTO.setSig_pais(jsonObject.get("country_code").toString());
 			dadosIPDTO.setTimezone(jsonObject.get("timezone").toString());
+			 Iterator<Object> iterator = jsonArray.iterator();
+	         while(iterator.hasNext()) {
+	        	System.out.println(iterator.next());
+	         }
+	       
 			return dadosIPDTO;
+			
 		} else
 			System.out.println("IP inválido");
-			return dadosIPDTO;
+			return null;
 	}
 
 	public boolean validarFormatoIPV4(String ip) { //valida formato de IPv4
