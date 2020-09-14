@@ -2,6 +2,7 @@ package ipTracer.Controller;
 
 
 
+
 import java.util.Iterator;
 
 import org.json.JSONArray;
@@ -24,7 +25,6 @@ public class IpTracerController {
 			String result = restTemplate.getForObject(uri, String.class);
 			System.out.println(transformarStringEmJson(result));
 			JSONObject jsonObject = transformarStringEmJson(result);
-			JSONArray jsonArray = (JSONArray) jsonObject.get("languages");
 			dadosIPDTO.setIp(jsonObject.get("ip_address").toString());
 			dadosIPDTO.setCidade(jsonObject.get("city").toString());
 			dadosIPDTO.setCod_regiao(jsonObject.get("region_code").toString());
@@ -39,9 +39,10 @@ public class IpTracerController {
 			dadosIPDTO.setPais(jsonObject.get("country").toString());
 			dadosIPDTO.setSig_pais(jsonObject.get("country_code").toString());
 			dadosIPDTO.setTimezone(jsonObject.get("timezone").toString());
+			JSONArray jsonArray = (JSONArray) jsonObject.get("languages");
 			 Iterator<Object> iterator = jsonArray.iterator();
 	         while(iterator.hasNext()) {
-	        	System.out.println(iterator.next());
+	        	dadosIPDTO.setLinguagens(jsonObject.get("languages").toString());
 	         }
 	       
 			return dadosIPDTO;
