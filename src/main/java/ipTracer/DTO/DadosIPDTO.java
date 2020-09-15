@@ -9,20 +9,20 @@ import net.minidev.json.JSONObject;
 @Getter @Setter
 public class DadosIPDTO {
 	
-	String Ip;
-	String Pais;
-	String Sig_pais;
-	String Continente;
-	String Sig_Continente;
-	String Municipio;
-	String Cidade;
-	String Estado;
-	String Cod_regiao;
-	String Timezone;
-	String Dono;
-	String Longitude;
-	String Latitude;
-	String Moeda;
-	String Linguagens;
+	private String Ip;
+	private String Pais;
+	private String Sig_pais;
+	private String Continente;
+	private String Sig_Continente;
+	private String Municipio;
+	private String Cidade;
+	private String Estado;
+	private String Cod_regiao;
+	private String Timezone;
+	private String Dono;
+	private String Longitude;
+	private String Latitude;
+	private String Moeda;
+	private JSONArray Linguagens;
 
 }
