@@ -23,6 +23,6 @@ public class DadosIPDTO {
 	private String Longitude;
 	private String Latitude;
 	private String Moeda;
-	private JSONArray Linguagens;
+	private Object Linguagens;
 
 }
