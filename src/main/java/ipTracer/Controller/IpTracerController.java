@@ -1,8 +1,5 @@
 package ipTracer.Controller;
 
-
-
-
 import java.util.Iterator;
 
 import org.json.JSONArray;
@@ -14,7 +11,7 @@ import ipTracer.DTO.DadosIPDTO;
 
 public class IpTracerController {
 
-	public DadosIPDTO requisitarDadosIP(String ip) {  //request da api usando o IP pesquisado
+	public DadosIPDTO requisitarDadosIP(String ip) { // request da api usando o IP pesquisado
 		final boolean validacao = validarFormatoIPV4(ip);
 		DadosIPDTO dadosIPDTO = new DadosIPDTO();
 		if (validacao) {
@@ -23,7 +20,6 @@ public class IpTracerController {
 
 			RestTemplate restTemplate = new RestTemplate();
 			String result = restTemplate.getForObject(uri, String.class);
-			System.out.println(transformarStringEmJson(result));
 			JSONObject jsonObject = transformarStringEmJson(result);
 			dadosIPDTO.setIp(jsonObject.get("ip_address").toString());
 			dadosIPDTO.setCidade(jsonObject.get("city").toString());
@@ -39,16 +35,20 @@ public class IpTracerController {
 			dadosIPDTO.setPais(jsonObject.get("country").toString());
 			dadosIPDTO.setSig_pais(jsonObject.get("country_code").toString());
 			dadosIPDTO.setTimezone(jsonObject.get("timezone").toString());
-	         
-	       
+			JSONArray jsonArray = (JSONArray) jsonObject.get("languages");
+			Iterator<Object> iterator = jsonArray.iterator();
+			//while (iterator.hasNext()) {
+			dadosIPDTO.setLinguagens(iterator.next());
+			//}
+
 			return dadosIPDTO;
-			
+
 		} else
-			
+
 			return null;
 	}
 
-	public boolean validarFormatoIPV4(String ip) { //valida formato de IPv4
+	public boolean validarFormatoIPV4(String ip) { // valida formato de IPv4
 		try {
 			if (ip == null || ip.isEmpty()) {
 				return false;
@@ -75,7 +75,7 @@ public class IpTracerController {
 		}
 	}
 
-	public JSONObject transformarStringEmJson(String string) { //transforma string em json
+	public JSONObject transformarStringEmJson(String string) { // transforma string em json
 		try {
 			JSONObject jsonObject = new JSONObject(string);
 			return jsonObject;
@@ -84,7 +84,5 @@ public class IpTracerController {
 		}
 		return null;
 	}
-	
-	
-	
+
 }

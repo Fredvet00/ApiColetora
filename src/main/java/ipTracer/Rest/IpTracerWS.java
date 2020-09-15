@@ -21,5 +21,4 @@ public class IpTracerWS {
 		return new ResponseEntity<>(ipTracerController.requisitarDadosIP(ip), HttpStatus.FOUND);
 
 	}
-
 }
