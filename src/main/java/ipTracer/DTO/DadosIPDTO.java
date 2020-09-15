@@ -1,15 +1,18 @@
 package ipTracer.DTO;
 
-import org.json.JSONArray;
 
 import lombok.Getter;
 import lombok.Setter;
-import net.minidev.json.JSONObject;
 
 @Getter @Setter
 public class DadosIPDTO {
 	
-	String Ip;
+
+	String continent, owner,country,city,timezone,latitude,county,continent_code,ip_address,country_code,warning,languages[];
+	
+	
+	
+	/*	String Ip;
 	String Pais;
 	String Sig_pais;
 	String Continente;
@@ -24,5 +27,5 @@ public class DadosIPDTO {
 	String Latitude;
 	String Moeda;
 	String Linguagens;
-
+*/
 }
