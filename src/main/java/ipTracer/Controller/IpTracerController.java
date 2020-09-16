@@ -40,10 +40,12 @@ public class IpTracerController {
 			dadosIPDTO.setSig_pais(jsonObject.get("country_code").toString());
 			dadosIPDTO.setTimezone(jsonObject.get("timezone").toString());
 			JSONArray jsonArray = (JSONArray) jsonObject.get("languages");
-			 Iterator<Object> iterator = jsonArray.iterator();
-	         while(iterator.hasNext()) {
-	        	dadosIPDTO.setLinguagens(jsonObject.get("languages").toString());
-	         }
+			String[] aux = new String[jsonArray.length()];
+			for(int i=0; i<jsonArray.length();i++) {
+				aux[i] = jsonArray.get(i).toString();
+			}
+			dadosIPDTO.setLinguagens(aux);
+
 	       
 			return dadosIPDTO;
 			
