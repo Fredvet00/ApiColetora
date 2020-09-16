@@ -23,7 +23,7 @@ public class DadosIPDTO {
 	private String Longitude;
 	private String Latitude;
 	private String Moeda;
-	private Object Linguagens;
+	private String[] Linguagens;
 	//String continent, owner,country,city,timezone,latitude,county,continent_code,ip_address,country_code,warning,languages[];
 
 
