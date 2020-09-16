@@ -18,7 +18,6 @@ public class IpTracerController {
 		String url = "https://api.ipfind.com/";
 		String queryElement = "?ip=";
 		String requestedElement = ip;
-		
 
 		if (ipTracerUtilsVerificators.verificarFormatoIPV4(ip)) {
 			ipTracerUtilsJsonToDTO.dataTransferMethod(dadosIPDTO,
