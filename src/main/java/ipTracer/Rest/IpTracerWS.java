@@ -14,12 +14,12 @@ import ipTracer.Controller.IpTracerController;
 
 public class IpTracerWS {
 	@GetMapping("/{ip}")
-
+	
+	
 	public ResponseEntity<?> retornarInfoIp(@PathVariable(value = "ip") String ip) {
 		IpTracerController ipTracerController = new IpTracerController();
 
-		return new ResponseEntity<>(ipTracerController.requisitarDadosIP(ip), HttpStatus.FOUND);
+		return new ResponseEntity<>(ipTracerController.processarIP(ip), HttpStatus.FOUND);
 
 	}
-
 }
